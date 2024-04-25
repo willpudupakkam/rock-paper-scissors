@@ -11,7 +11,9 @@ let gameOver = false;
 function playRound(playerSelection, computerSelection) {
     let plr = playerSelection.toLowerCase()
     let comp = computerSelection.toLowerCase()
-
+    if (gameOver) {
+        return '';
+    }
     switch(plr) {
         case 'rock':
             switch(comp) {
@@ -63,27 +65,28 @@ scoreul.appendChild(scoreli);
 rockBtn.addEventListener("click", () => {
     if (gameOver) {
         return;
-    }
-    const li = document.createElement("li");
-    li.textContent = playRound('rock', getComputerChoice());
-    ul.appendChild(li);
-
-    scoreli.textContent = "Score: " + playerScore + " - " + compScore;
-    scoreul.appendChild(scoreli);
-
-    if (playerScore === 5 || compScore === 5) {
+    } else {
         const li = document.createElement("li");
-        gameOver = true;
-        switch(playerScore) {
-            case 5:
-                li.textContent = "Player wins!"
-                li.style.color = "green";
-                ul.appendChild(li);
-                break;
-            default:
-                li.textContent = "Computer wins!"
-                li.style.color = "red";
-                ul.appendChild(li);
+        li.textContent = playRound('rock', getComputerChoice());
+        ul.appendChild(li);
+
+        scoreli.textContent = "Score: " + playerScore + " - " + compScore;
+        scoreul.appendChild(scoreli);
+
+        if (playerScore === 5 || compScore === 5) {
+            const li = document.createElement("li");
+            gameOver = true;
+            switch(playerScore) {
+                case 5:
+                    li.textContent = "Player wins!"
+                    li.style.color = "green";
+                    ul.appendChild(li);
+                    break;
+                default:
+                    li.textContent = "Computer wins!"
+                    li.style.color = "red";
+                    ul.appendChild(li);
+            }
         }
     }
 
@@ -91,92 +94,58 @@ rockBtn.addEventListener("click", () => {
 paperBtn.addEventListener("click", () => {
     if (gameOver) {
         return;
-    }
-    const li = document.createElement("li");
-    li.textContent = playRound('paper', getComputerChoice());
-    ul.appendChild(li);
-
-    scoreli.textContent = "Score: " + playerScore + " - " + compScore;
-    scoreul.appendChild(scoreli);
-
-    if (playerScore === 5 || compScore === 5) {
+    } else {
         const li = document.createElement("li");
-        switch(playerScore) {
-            case 5:
-                li.textContent = "Player wins!"
-                li.style.color = "green";
-                ul.appendChild(li);
-                break;
-            default:
-                li.textContent = "Computer wins!"
-                li.style.color = "red";
-                ul.appendChild(li);
+        li.textContent = playRound('paper', getComputerChoice());
+        ul.appendChild(li);
+
+        scoreli.textContent = "Score: " + playerScore + " - " + compScore;
+        scoreul.appendChild(scoreli);
+
+        if (playerScore === 5 || compScore === 5) {
+            const li = document.createElement("li");
+            switch(playerScore) {
+                case 5:
+                    li.textContent = "Player wins!"
+                    li.style.color = "green";
+                    ul.appendChild(li);
+                    break;
+                default:
+                    li.textContent = "Computer wins!"
+                    li.style.color = "red";
+                    ul.appendChild(li);
+            }
         }
     }
+    
 
 });
 scissorsBtn.addEventListener("click", () => {
     if (gameOver) {
         return;
-    }
-    const li = document.createElement("li");
-    li.textContent = playRound('scissors', getComputerChoice());
-    ul.appendChild(li);
-
-    scoreli.textContent = "Score: " + playerScore + " - " + compScore;
-    scoreul.appendChild(scoreli);
-
-    if (playerScore === 5 || compScore === 5) {
+    } else {
         const li = document.createElement("li");
-        gameOver = true;
-        switch(playerScore) {
-            case 5:
-                li.textContent = "Player wins!"
-                li.style.color = "green";
-                ul.appendChild(li);
-                break;
-            default:
-                li.textContent = "Computer wins!"
-                li.style.color = "red";
-                ul.appendChild(li);
+        li.textContent = playRound('scissors', getComputerChoice());
+        ul.appendChild(li);
+
+        scoreli.textContent = "Score: " + playerScore + " - " + compScore;
+        scoreul.appendChild(scoreli);
+
+        if (playerScore === 5 || compScore === 5) {
+            const li = document.createElement("li");
+            gameOver = true;
+            switch(playerScore) {
+                case 5:
+                    li.textContent = "Player wins!"
+                    li.style.color = "green";
+                    ul.appendChild(li);
+                    break;
+                default:
+                    li.textContent = "Computer wins!"
+                    li.style.color = "red";
+                    ul.appendChild(li);
+            }
         }
     }
-
+    
 });
-
-
-
-// function playGame() {
-
-//     let playerPoints = 0
-//     let compPoints = 0
-
-//     for (let i = 1; i <= 5; i++) {
-//         let playerChoice = prompt("Choose: rock, paper, scissors.")
-//         let roundResult = playRound(playerChoice, getComputerChoice())
-        
-//         if(roundResult === 'WIN') {
-//             playerPoints++;
-//             console.log("Round "+i+": Player +1!")
-//             console.log("Score: "+ playerPoints +" - "+ compPoints)
-//         } else if(roundResult === 'LOSE') {
-//             compPoints++;
-//             console.log("Round "+i+": Computer +1!")
-//             console.log("Score: "+ playerPoints +" - "+ compPoints)
-//         } else {
-//             playerPoints++;
-//             compPoints++;
-//             console.log("Round "+i+": Tie!")
-//             console.log("Score: "+ playerPoints +" - "+ compPoints)
-//         }
-//     }
-
-//     if(playerPoints > compPoints) {
-//         return "Player wins! Final score: " + playerPoints +" - "+ compPoints
-//     } else if(compPoints > playerPoints) {
-//         return "Player loses! Final score: " + playerPoints +" - "+ compPoints
-//     } else {
-//         return "Tie! Final score: " + playerPoints +" - "+ compPoints
-//     }
-
-// }
